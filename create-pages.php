@@ -1,6 +1,6 @@
 <?php
 
-/* This should be included in your functions.php file and called once (or whenever you need it */
+/* This should be included in your functions.php file and called once (or whenever you need it). See notes at the bottom on how to use it */
 
 
 function create_new_pages(){
@@ -19,7 +19,7 @@ function create_new_pages(){
             'About Us', 'Sustainability', 'Partner Program'
         ),
         'Contact' => array(
-            'Where to Buy', 'contact me'
+            'Where to Buy'
         )
     );
 
@@ -121,6 +121,6 @@ function create_new_pages(){
 }
 
 // load this in the admin, append &create_pages='' whatever your secret key is below
-if(is_admin() && $_GET['create_pages']=='mc893nois'){
+if(is_admin() && (isset($_GET['create_pages']) && $_GET['create_pages']=='mc893nois')){
     add_action('init','create_new_pages');
 }
