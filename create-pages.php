@@ -19,12 +19,12 @@ function create_new_pages(){
             'About Us', 'Sustainability', 'Partner Program'
         ),
         'Contact' => array(
-            'Where to Buy', 'contact me'
+            'Where to Buy'
         )
     );
     $needed_pages_total = count($needed_pages) + array_sum(array_map("count", $needed_pages));
 
-    $debug = $_GET['debug'] ? TRUE : FALSE;
+    $debug = @$_GET['debug'] ? TRUE : FALSE;
 
     // CHECK PARENT PAGES
 
@@ -128,3 +128,4 @@ function create_new_pages(){
 if(is_admin() && (isset($_GET['create_pages']) && $_GET['create_pages']=='mc893nois')){
     add_action('init','create_new_pages');
 }
+
