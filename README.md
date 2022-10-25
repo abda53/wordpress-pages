@@ -1,2 +1,1 @@
-# wordpress-pages
-Create wordpress pages on the fly with just an array
+Wordpress Pages will allow you to create Wordpress pages on the fly, with a simple PHP array. It currently only works for 1 levvel of pages and currently works best with sites with only unique page names.
