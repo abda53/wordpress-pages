@@ -120,7 +120,7 @@ function create_new_pages(){
 
 }
 
-// load this as needed, typically only need to once
-if(!is_admin()){
+// load this in the admin, append &create_pages='' whatever your secret key is below
+if(is_admin() && $_GET['create_pages']=='mc893nois'){
     add_action('init','create_new_pages');
 }
