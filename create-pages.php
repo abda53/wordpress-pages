@@ -1,7 +1,7 @@
 <?php
 
-/* This should be included in your functions.php file and called once (or whenever you need it). See notes at the bottom on how to use it */
 
+/* This should be included in your functions.php file and called once (or whenever you need it). See notes at the bottom on how to use it */
 
 function create_new_pages(){
 
@@ -13,17 +13,16 @@ function create_new_pages(){
             'Out-of-the-Box', 'Scanner Rental', 'Professional Services'
         ),
         'Support' => array(
-            'Drivers and Manuals', 'FAQs', 'Parts and Accessories', 'Product Registration', 'Warranties', 'Leave a Review'
+            'Drivers and Manuals', 'FAQs', 'Parts and Accessories', 'Visioneer Video Library', 'Product Registration', 'Warranties', 'Leave a Review'
         ),
         'Company' => array(
             'About Us', 'Sustainability', 'Partner Program'
         ),
         'Contact' => array(
-            'Where to Buy'
+            'Where to Buy', 'contact me'
         )
     );
-
-
+    $needed_pages_total = count($needed_pages) + array_sum(array_map("count", $needed_pages));
 
     $debug = $_GET['debug'] ? TRUE : FALSE;
 
@@ -90,6 +89,7 @@ function create_new_pages(){
 
 
     // loop through each existing main page, get ID
+    $i = 0;
     foreach($existing_pages AS $page){
         if($debug){echo '<strong>'.$page->post_title.'</strong><Br>';}
         // look for corresponding needed page if has no parent
@@ -113,6 +113,10 @@ function create_new_pages(){
                     }
                 }
             }
+        }
+        ++$i;
+        if($i > $needed_pages_total){
+            echo 'ERROR: You might be in an infinite loop'; exit;
         }
     }
 
